@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('exams', function (Blueprint $table) {
             $table->id();
-            $table->string('login')->unique();
-            $table->string('password');
-            $table->rememberToken();
+            $table->dateTime('start_time');
+            $table->dateTime('end_time');
+            $table->foreignId('creator_user_id')->constrained('users')->noActionOnDelete();
+            $table->tinyInteger('status')->default(0)->comment('0: creating, 1: scheduled, 2: ended');
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('exams');
     }
 };

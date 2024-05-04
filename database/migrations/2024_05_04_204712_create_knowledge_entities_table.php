@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('knowledge_entities', function (Blueprint $table) {
             $table->id();
-            $table->string('login')->unique();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('name');
+            $table->tinyInteger('type')->comment('0: file, 1: video-file, 2: link, 3: text');
+            $table->foreignId('knowledge_entities_group_id')->constrained('knowledge_entity_groups')->noActionOnDelete();
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('knowledge_entities');
     }
 };

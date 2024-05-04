@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('login')->unique();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+        Schema::create('user_user_group', function (Blueprint $table) {
+            $table->foreignId('user_id')->constrained('users')->noActionOnDelete();
+            $table->foreignId('user_group_id')->constrained('user_groups')->noActionOnDelete();
         });
     }
 
@@ -25,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('user_user_group');
     }
 };
