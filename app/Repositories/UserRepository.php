@@ -37,9 +37,8 @@ class UserRepository
         return $user;
     }
 
-    public function updatePassword(int $userId, string $password): User
+    public function updatePassword(User $user, string $password): User
     {
-        $user = User::find($userId);
         $user->password = $password;
         $user->save();
 

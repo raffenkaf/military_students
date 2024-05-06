@@ -30,17 +30,17 @@ class UserController extends AdminController
         return view('admin.users.created', ['user' => $user, 'password' => $password]);
     }
 
-    public function delete(int $userId)
+    public function destroy(User $user)
     {
-        User::find($userId)->delete();
+        $user->delete();
 
         return redirect()->route('admin.users');
     }
 
-    public function update(UserRepository $userRepository, int $userId)
+    public function update(UserRepository $userRepository, User $user)
     {
         $password = $this->generateNewPassword();
-        $user = $userRepository->updatePassword($userId, $password);
+        $userRepository->updatePassword($user, $password);
 
         return view('admin.users.password_updated', ['user' => $user, 'password' => $password]);
     }

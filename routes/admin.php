@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\UserGroupController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/dashboard', function () {
@@ -10,19 +11,28 @@ Route::get('/dashboard', function () {
 Route::get('/users', [UserController::class, 'index'])
     ->name('admin.users');
 Route::post('/users', [UserController::class, 'create'])
-    ->name('admin.user.create');
-Route::delete('/users/{userId}', [UserController::class, 'delete'])
+    ->name('admin.user.store');
+Route::delete('/users/{user}', [UserController::class, 'destroy'])
     ->name('admin.user.delete');
-Route::patch('/users/{userId}', [UserController::class, 'update'])
+Route::put('/users/{user}', [UserController::class, 'update'])
     ->name('admin.user.update');
 
 Route::get('/user/{userId}/rights', function () {
     return view('admin/index');
 })->name('admin.user.rights');
 
-Route::get('/user-groups', function () {
-    return view('admin/index');
-})->name('admin.user-groups');
+Route::get('/user-groups', [UserGroupController::class, 'index'])
+    ->name('admin.user-groups');
+Route::get('/user-groups/create', [UserGroupController::class, 'create'])
+    ->name('admin.user-groups.create');
+Route::post('/user-groups', [UserGroupController::class, 'store'])
+    ->name('admin.user-group.store');
+Route::get('/user-groups/{userGroup}/edit', [UserGroupController::class, 'edit'])
+    ->name('admin.user-group.edit');
+Route::put('/user-groups/{userGroup}', [UserGroupController::class, 'update'])
+    ->name('admin.user-group.update');
+Route::delete('/user-groups/{userGroup}', [UserGroupController::class, 'destroy'])
+    ->name('admin.user-group.delete');
 
 Route::get('/question-topics', function () {
     return view('admin/index');

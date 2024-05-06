@@ -4,7 +4,7 @@
             <li class="m-2 p-1 bg-gray-200 rounded-2xl hover:bg-gray-300"><a href="{{ route('admin.users') }}">Користувачі</a></li>
             {{--                    <li><a>Права</a></li>--}}
 
-            <li class="m-2 p-1 bg-gray-200 rounded-2xl hover:bg-gray-300"><a href="{{ route('admin.users') }}">Групи користувачів</a></li>
+            <li class="m-2 p-1 bg-gray-200 rounded-2xl hover:bg-gray-300"><a href="{{ route('admin.user-groups') }}">Групи користувачів</a></li>
             <li class="m-2 p-1 bg-gray-200 rounded-2xl hover:bg-gray-300"><a href="{{ route('admin.users') }}">Теми питань до тестів</a></li>
             {{--                    <li><a>Питання</a></li>--}}
             {{--                    <li><a>Відповіді</a></li>--}}
