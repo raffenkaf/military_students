@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'School') }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -16,7 +16,7 @@
 </head>
 <body class="font-sans antialiased">
 <div class="min-h-screen bg-gray-100">
-    @include('layouts.navigation-backup')
+    @include('layouts.navigation')
 
     <!-- Page Heading -->
     @if (isset($header))
@@ -29,7 +29,14 @@
 
     <!-- Page Content -->
     <main>
-        {{ $slot }}
+        <div class="flex justify-between py-1">
+            @include('layouts.admin.side-nav')
+            <div class="flex-1 px-2">
+                <div class="bg-white border-4 overflow-hidden shadow-sm sm:rounded-lg">
+                    {{ $slot }}
+                </div>
+            </div>
+        </div>
     </main>
 </div>
 </body>
