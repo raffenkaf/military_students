@@ -2,26 +2,25 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreUserGroupRequest;
 use App\Http\Requests\Admin\UpdateUserGroupRequest;
 use App\Models\UserGroup;
 use App\Repositories\UserGroupRepository;
 use Illuminate\Http\Request;
 
-class UserGroupController extends Controller
+class UserGroupController extends AdminController
 {
     /**
      * Display a listing of the resource.
      */
     public function index(UserGroupRepository $repository, Request $request)
     {
-        $searchParam = $request->get('searchByIdOrLogin');
+        $searchParam = $request->get('searchByIdOrName');
 
         if ($searchParam) {
             $userGroups = $repository->searchByIdOrName($searchParam);
         } else {
-            $userGroups = $repository->lastCreated();
+            $userGroups = UserGroup::lastCreated();
         }
 
         return view('admin.user_groups.index', ['userGroups' => $userGroups, 'searchParam' => $searchParam]);

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\QuestionTopicController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserGroupController;
 use Illuminate\Support\Facades\Route;
@@ -34,9 +35,18 @@ Route::put('/user-groups/{userGroup}', [UserGroupController::class, 'update'])
 Route::delete('/user-groups/{userGroup}', [UserGroupController::class, 'destroy'])
     ->name('admin.user-group.delete');
 
-Route::get('/question-topics', function () {
-    return view('admin/index');
-})->name('admin.question-topics');
+Route::get('/question-topics', [QuestionTopicController::class, 'index'])
+    ->name('admin.question-topics');
+Route::get('/question-topics/create', [QuestionTopicController::class, 'create'])
+    ->name('admin.question-topics.create');
+Route::post('/question-topics', [QuestionTopicController::class, 'store'])
+    ->name('admin.question-topic.store');
+Route::delete('/question-topics/{questionTopic}', [QuestionTopicController::class, 'destroy'])
+    ->name('admin.question-topic.delete');
+Route::get('/question-topics/{questionTopic}/edit', [QuestionTopicController::class, 'edit'])
+    ->name('admin.question-topic.edit');
+Route::put('/question-topics/{questionTopic}', [QuestionTopicController::class, 'update'])
+    ->name('admin.question-topic.update');
 
 Route::get('/question-topic/{questionTopicId}/questions', function () {
     return view('admin/index');

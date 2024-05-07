@@ -15,11 +15,4 @@ class UserGroupRepository
             ->union($idSearch)
             ->get();
     }
-
-    public function lastCreated()
-    {
-        return UserGroup::orderBy('id', 'desc')
-            ->limit(20)
-            ->get();
-    }
 }
