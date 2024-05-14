@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\Admin\StoreUserGroupRequest;
 use App\Http\Requests\Admin\UpdateUserGroupRequest;
 use App\Models\UserGroup;
-use App\Repositories\UserGroupRepository;
+use App\Repositories\Admin\UserGroupRepository;
 use Illuminate\Http\Request;
 
 class UserGroupController extends AdminController

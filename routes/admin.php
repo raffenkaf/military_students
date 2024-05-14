@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ExamController;
 use App\Http\Controllers\Admin\QuestionTopicController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserGroupController;
@@ -56,9 +57,18 @@ Route::get('/question-topic/{questionTopicId}/questions/{questionId}/options', f
     return view('admin/index');
 })->name('admin.question-topic.question.answers');
 
-Route::get('/exams', function () {
-    return view('admin/index');
-})->name('admin.exams');
+Route::get('/exams', [ExamController::class, 'index'])
+    ->name('admin.exams');
+Route::get('/exams/create', [ExamController::class, 'create'])
+    ->name('admin.exams.create');
+Route::post('/exams', [ExamController::class, 'store'])
+    ->name('admin.exams.store');
+Route::delete('/exams/{questionTopic}', [ExamController::class, 'destroy'])
+    ->name('admin.exams.delete');
+Route::get('/exams/{questionTopic}/edit', [ExamController::class, 'edit'])
+    ->name('admin.exams.edit');
+Route::put('/exams/{questionTopic}', [ExamController::class, 'update'])
+    ->name('admin.exams.update');
 
 Route::get('/knowledge-entity-groups', function () {
     return view('admin/index');

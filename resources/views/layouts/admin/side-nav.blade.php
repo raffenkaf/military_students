@@ -16,17 +16,17 @@
             {{--                    <li><a>Відповіді</a></li>--}}
 
             <li class="m-2 p-1 bg-gray-200 rounded-2xl hover:bg-gray-300">
-                <a href="{{ route('admin.users') }}">Екзамени</a>
+                <a href="{{ route('admin.exams') }}">Екзамени</a>
             </li>
         </ul>
 
         <ul class="p-1 border-2 mb-2 text-center align-middle">
             <li class="m-2 p-1 bg-gray-200 rounded-2xl hover:bg-gray-300 hover:cursor-pointer">
-                <a href="{{ route('admin.users') }}">Групи учбових матеріалів</a>
+                <a href="{{ route('admin.knowledge-entity-groups') }}">Групи учбових матеріалів</a>
             </li>
-            <li class="m-2 p-1 bg-gray-200 rounded-2xl hover:bg-gray-300">
-                <a href="{{ route('admin.users') }}">Учбові матеріали</a>
-            </li>
+{{--            <li class="m-2 p-1 bg-gray-200 rounded-2xl hover:bg-gray-300">--}}
+{{--                <a href="{{ route('admin.knowledge-entity-group.knowledge-entities') }}">Учбові матеріали</a>--}}
+{{--            </li>--}}
         </ul>
 
         <ul class="p-1 border-2 mb-2 text-center align-middle">

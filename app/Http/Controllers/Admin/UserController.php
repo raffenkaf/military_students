@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
-use App\Repositories\UserRepository;
+use App\Repositories\Admin\UserRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 

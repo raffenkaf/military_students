@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\Admin\StoreQuestionTopicRequest;
 use App\Http\Requests\Admin\UpdateQuestionTopicRequest;
 use App\Models\QuestionTopic;
-use App\Repositories\QuestionTopicRepository;
+use App\Repositories\Admin\QuestionTopicRepository;
 use Illuminate\Http\Request;
 
 class QuestionTopicController extends AdminController
@@ -15,10 +15,10 @@ class QuestionTopicController extends AdminController
      */
     public function index(Request $request, QuestionTopicRepository $repository)
     {
-        $searchParam = $request->get('searchByIdOrLogin');
+        $searchParam = $request->get('searchByIdOrName');
 
         if ($searchParam) {
-//            $users = $repository->searchByIdOrLogin($searchParam);
+            $questionTopics = $repository->searchByIdOrName($searchParam);
         } else {
             $questionTopics = QuestionTopic::lastCreated();
         }
