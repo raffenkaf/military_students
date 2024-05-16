@@ -31,7 +31,7 @@
     <!-- Page Content -->
     <main>
         <div class="flex justify-between py-1">
-            @include('layouts.admin.side-nav')
+            @include('components.admin.side-nav')
             <div class="flex-1 px-2">
                 <div class="bg-white border-4 overflow-hidden shadow-sm sm:rounded-lg">
                     {{ $slot }}

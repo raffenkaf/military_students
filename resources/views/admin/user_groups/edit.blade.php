@@ -5,8 +5,12 @@
         </h2>
     </x-slot>
 
-    <div class="p-3">
-        <form action="{{ route('admin.user-group.update', ['userGroup' => $userGroup]) }}" method="POST">
+    <div class="p-3" x-data="{ buttonDisabled: false }">
+        <form
+            action="{{ route('admin.user-group.update', ['userGroup' => $userGroup]) }}"
+            method="POST"
+            @submit="buttonDisabled"
+        >
             @csrf
             {{ method_field('PUT') }}
             <div class="flex flex-col">
