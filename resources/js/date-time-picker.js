@@ -6,7 +6,8 @@ import timepicker from 'timepicker';
 const picker = datepicker('.datepicker-date', {
     formatter: (input, date, instance) => {
         input.value = moment(date).format('YYYY-MM-DD');
-    }
+    },
+    minDate: new Date()
 });
 
 
