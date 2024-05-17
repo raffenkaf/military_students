@@ -1,7 +1,9 @@
 <x-admin-layout>
+    <x-slot name="header">
+        <h1 class="text-2xl">Пароль оновлений</h1>
+    </x-slot>
     <div class="p-3">
-        <header class="p-2 w-full flex justify-between">
-            <h1 class="text-2xl">Пароль оновлений</h1>
+        <header class="p-2 w-full flex justify-start">
             <div>
                 <a
                     href="{{ route('admin.users') }}"

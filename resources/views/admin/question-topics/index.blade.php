@@ -1,13 +1,17 @@
 <x-admin-layout>
     <div class="p-3">
-        <header class="p-2 w-full flex justify-between">
-            <h1 class="text-2xl">Теми тестів</h1>
+        <x-slot name="header">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                Теми тестів
+            </h2>
+        </x-slot>
+        <header class="p-2 w-full flex justify-end">
             <div>
                 <a
                     href="{{ route('admin.question-topics.create') }}"
-                    class="py-2 px-4 rounded-3xl bg-blue-100 hover:bg-blue-200"
+                    class="py-3 px-4 rounded-3xl bg-blue-100 hover:bg-blue-200"
                 >
-                    Створити тему тестів
+                    Створити нову тему тестів
                 </a>
             </div>
         </header>

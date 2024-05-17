@@ -1,7 +1,11 @@
 <x-admin-layout>
     <div class="p-3">
-        <header class="p-2 w-full flex justify-between">
-            <h1 class="text-2xl">Користувач створений</h1>
+        <x-slot name="header">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                <h1 class="text-2xl">Користувач створений</h1>
+            </h2>
+        </x-slot>
+        <header class="p-2 w-full flex justify-start">
             <div>
                 <a
                     href="{{ route('admin.users') }}"
