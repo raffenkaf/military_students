@@ -13,6 +13,7 @@
         "axios": "^1.6.4",
         "laravel-vite-plugin": "^1.0.0",
         "postcss": "^8.4.31",
+        "select2": "^4.1.0-rc.0",
         "tailwindcss": "^3.1.0",
         "vite": "^5.0.0"
     },
@@ -20,7 +21,6 @@
         "jquery": "^3.7.1",
         "js-datepicker": "^5.18.2",
         "moment": "^2.30.1",
-        "select2": "^4.1.0-rc.0",
         "timepicker": "^1.14.1"
     }
 }

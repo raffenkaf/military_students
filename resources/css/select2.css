@@ -1,0 +1,5 @@
+@import 'select2/dist/css/select2.css';
+
+span.select2.select2-container {
+    flex: 3;
+}

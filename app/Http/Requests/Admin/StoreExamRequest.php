@@ -25,7 +25,7 @@ class StoreExamRequest extends FormRequest
         return [
             'start_time' => 'required|date|after:now',
             'end_time' => 'required|date|after:start_time',
-            'creator_user_id' => 'required|exists:users,id',
+            'creator_user_id' => 'exists:users,id',
             'status' => 'integer|max:127|min:0',
         ];
     }

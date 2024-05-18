@@ -1,4 +1,4 @@
-@vite(['resources/js/date-time-picker.js', 'resources/js/create-exam.js', 'resources/css/date-time-picker.css'])
+@vite(['resources/js/date-time-picker.js', 'resources/js/create-exam.js', 'resources/css/date-time-picker.css', 'resources/css/select2.css'])
 <x-admin-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -8,13 +8,7 @@
 
     <div
         class="p-3 text-center"
-        x-data="createFormData({
-            examDate: '{{ old('exam_date') }}',
-            startTime: '{{ old('start_time') }}',
-            endTime: '{{ old('end_time') }}',
-            userGroups: [],
-            questionTopics: @json($questionTopics),
-        })"
+        x-data="createFormData()"
     >
         <div class="flex justify-start">
             <a href="{{ route('admin.exams') }}"
@@ -34,11 +28,11 @@
                         <input
                             type="text"
                             name="exam_date"
-                            x-model="examDate"
                             id="exam_date"
                             class="p-1 border-2 border-gray-200 rounded-2xl datepicker-date"
                             :disabled="formStage !== 1"
                             autocomplete="off"
+                            value="{{ old('exam_date') }}"
                             required
                         >
                         @error('exam_date')
@@ -52,7 +46,7 @@
                             name="start_time"
                             id="start_time"
                             class="p-1 border-2 border-gray-200 rounded-2xl datepicker-time"
-                            x-model="startTime"
+                            value="{{ old('start_time') }}"
                             required
                         >
                         @error('start_time')
@@ -66,7 +60,7 @@
                             name="end_time"
                             id="end_time"
                             class="p-1 border-2 border-gray-200 rounded-2xl datepicker-time"
-                            x-model="endTime"
+                            value="{{ old('end_time') }}"
                             required
                         >
                         @error('end_time')
@@ -78,8 +72,8 @@
                         <button
                             type="button"
                             class="py-1 px-10 mr-2 mt-4 rounded-3xl bg-blue-100 hover:bg-blue-200"
-                            @click="moveToFirstStage()"
                             x-show="formStage !== 1"
+                            @click="moveToFirstStage()"
                         >
                             Перевизначити дату та час
                         </button>
@@ -95,41 +89,42 @@
                 </div>
             </div>
             <div class="flex text-center justify-center border-2 mt-2"
-                 x-show="stage === 2"
+                 x-show="formStage === 2"
             >
                 @csrf
-                <div class="p-3 mt-2 w-1/2" id="first-stage-div">
+                <div class="p-3 mt-2 w-3/4" id="second-stage-div">
                     <div class="flex m-auto justify-between items-center">
-                        <label for="name" class="p-1 mr-2">Дата екзамену</label>
-                        <select
-                            name="exam_user_groups"
-                            id="exam_date"
-                            required
-                        >
-
-                        </select>
-                        @error('exam_user_groups')
-                        <div class="text-red-400 ml-2 text-sm">{{ $message }}</div>
+                        <label for="name" class="p-1 mr-2 flex-1 flex items-center">
+                            <span class="flex-2 pr-3">Теми питань для екзамену</span>
+                            <select
+                                name="question_topics[]"
+                                id="question_topics"
+                                multiple="multiple"
+                                required
+                            >
+                                @foreach($questionTopics as $questionTopic)
+                                    <option value="{{ $questionTopic->id }}">{{ $questionTopic->name }}</option>
+                                @endforeach
+                            </select>
+                        </label>
+                        @error('question_topics')
+                            <div class="text-red-400 ml-2 text-sm">{{ $message }}</div>
                         @enderror
                     </div>
 
-
-
-
-
-
-                    <div class="flex m-auto justify-between items-center pt-2">
-                        <label for="name" class="p-1 mr-2">Час початку екзамену</label>
-                        <input
-                            type="text"
-                            name="start_time"
-                            id="start_time"
-                            class="p-1 border-2 border-gray-200 rounded-2xl datepicker-time"
-                            x-model="startTime"
-                            required
-                        >
-                        @error('start_time')
-                        <div class="text-red-400 ml-2 text-sm">{{ $message }}</div>
+                    <div class="flex m-auto justify-between items-center">
+                        <label for="name" class="p-1 mr-2 flex-1 flex items-center">
+                            <span class="flex-2 pr-3">Групи користувачів</span>
+                            <select
+                                name="exam_user_groups[]"
+                                id="exam_user_groups"
+                                multiple="multiple"
+                                required
+                            >
+                            </select>
+                        </label>
+                        @error('exam_user_groups')
+                            <div class="text-red-400 ml-2 text-sm">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="flex justify-center">
