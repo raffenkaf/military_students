@@ -14,7 +14,8 @@ class AdminForm extends Component
     public function __construct(
         public string $action,
         public string $routeBack,
-        public string $method = 'POST'
+        public string $method = 'POST',
+        public string $enctype = 'multipart/form-data',
     )
     {
     }

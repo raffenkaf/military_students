@@ -1,6 +1,7 @@
 <form
     action="{{ $action }}"
     method="{{ $method }}"
+    enctype="{{ $enctype }}"
     @submit="buttonDisabled = true"
     x-data="{ buttonDisabled: false }"
 >

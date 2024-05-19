@@ -2,21 +2,18 @@
     <div class="p-3">
         <x-slot name="header">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Теми тестів
+                <h1 class="text-2xl">Групи користувачів</h1>
             </h2>
         </x-slot>
         <header class="p-2 w-full flex justify-end">
             <div>
-                <a
-                    href="{{ route('admin.question-topic.create') }}"
-                    class="py-3 px-4 rounded-3xl bg-blue-100 hover:bg-blue-200"
-                >
-                    Створити нову тему тестів
+                <a href="{{ route('admin.user-group.create') }}" class="py-3 px-4 rounded-3xl bg-blue-100 hover:bg-blue-200">
+                    Створити групу
                 </a>
             </div>
         </header>
-        @if($questionTopics->count() > 0)
-            <form action="{{ route('admin.question-topics') }}" method="get" class="flex flex-col p-2">
+        @if($userGroups->count() > 0)
+            <form action="{{ route('admin.user-groups') }}" method="get" class="flex flex-col p-2">
                 @csrf
                 <label for="searchParam">Пошук по id або по імені</label>
                 <div>
@@ -25,7 +22,7 @@
                         Знайти
                     </button>
                     @if($searchParam)
-                        <a href="{{ route('admin.question-topics') }}"
+                        <a href="{{ route('admin.user-groups') }}"
                            class="py-2.5 px-3 my-1 mx-3 rounded-3xl bg-blue-100 hover:bg-blue-200 text-base">
                             Скинути
                         </a>
@@ -41,32 +38,32 @@
                     <th class="flex-1 border-2 border-collapse">Редагувати</th>
                     <th class="flex-1 border-2 border-collapse">Видалення</th>
                 </tr>
-                @foreach($questionTopics as $questionTopic)
+                @foreach($userGroups as $userGroup)
                     <tr class="flex flex-row border-2 border-collapse">
                         <td class="flex-1 border-2 border-collapse">
                             <div class="flex h-full align-middle justify-center items-center">
-                                {{ $questionTopic->id }}
+                                {{ $userGroup->id }}
                             </div>
                         </td>
                         <td class="flex-1 border-2 border-collapse">
                             <div class="flex h-full align-middle justify-center items-center">
-                                {{ $questionTopic->name }}
+                                {{ $userGroup->name }}
                             </div>
                         </td>
                         <td class="flex-1 border-2 border-collapse">
                             <div class="flex h-full align-middle justify-center items-center">
-                                {{ $questionTopic->shortDescription() }}
+                                {{ $userGroup->shortDescription() }}
                             </div>
                         </td>
                         <td class="flex-1 border-2 border-collapse">
                             <div class="flex h-full align-middle justify-center items-center">
-                                {{ $questionTopic->created_at->format('Y-m-d') }}
+                                {{ $userGroup->created_at->format('Y-m-d') }}
                             </div>
                         </td>
                         <td class="flex-1 border-2 border-collapse">
                             <div class="flex h-full align-middle justify-center items-center">
                                 <a
-                                    href="{{ route('admin.question-topic.edit', ['questionTopic' => $questionTopic]) }}"
+                                    href="{{ route('admin.user-group.edit', ['userGroup' => $userGroup]) }}"
                                     class="py-1 px-3 my-1 rounded-3xl bg-blue-100 hover:bg-blue-200">
                                     Редагувати
                                 </a>
@@ -74,7 +71,7 @@
                         </td>
                         <td class="flex-1 border-2 border-collapse">
                             <form
-                                action="{{ route('admin.question-topic.delete', ['questionTopic' => $questionTopic]) }}"
+                                action="{{ route('admin.user-group.delete', ['userGroup' => $userGroup]) }}"
                                 method="POST"
                                 class="flex h-full align-middle justify-center items-center"
                             >

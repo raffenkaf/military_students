@@ -4,7 +4,7 @@
             <h1 class="text-2xl">Теми тестів</h1>
             <div>
                 <a
-                    href="{{ route('admin.exams.create') }}"
+                    href="{{ route('admin.exam.create') }}"
                     class="py-2 px-4 rounded-3xl bg-blue-100 hover:bg-blue-200"
                 >
                     Запланувати екзамен

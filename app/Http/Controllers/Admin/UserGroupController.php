@@ -23,7 +23,7 @@ class UserGroupController extends AdminController
             $userGroups = UserGroup::lastCreated();
         }
 
-        return view('admin.user_groups.index', ['userGroups' => $userGroups, 'searchParam' => $searchParam]);
+        return view('admin.user-groups.index', ['userGroups' => $userGroups, 'searchParam' => $searchParam]);
     }
 
     /**
@@ -31,7 +31,7 @@ class UserGroupController extends AdminController
      */
     public function create()
     {
-        return view('admin.user_groups.create');
+        return view('admin.user-groups.create');
     }
 
     /**
@@ -60,7 +60,7 @@ class UserGroupController extends AdminController
      */
     public function edit(UserGroup $userGroup)
     {
-        return view('admin.user_groups.edit', ['userGroup' => $userGroup]);
+        return view('admin.user-groups.edit', ['userGroup' => $userGroup]);
     }
 
     /**

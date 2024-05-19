@@ -17,7 +17,7 @@
                 Назад
             </a>
         </div>
-        <form action="{{ route('admin.exams.store') }}" method="POST">
+        <form action="{{ route('admin.exam.store') }}" method="POST">
             <div class="flex text-center justify-center border-2 mt-2"
                  :class="{ ['bg-gray-400']: formStage !== 1 }"
             >
