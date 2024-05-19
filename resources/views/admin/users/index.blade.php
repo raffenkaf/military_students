@@ -7,7 +7,7 @@
         </x-slot>
         <header class="p-2 w-full flex justify-end">
             <div>
-                <form method="POST" action="{{ route('admin.user.store') }}">
+                <form method="POST" action="{{ route('admin.users.store') }}">
                     @csrf
                     <button type="submit" class="py-2 px-4 rounded-3xl bg-blue-100 hover:bg-blue-200">
                         Створити користувача
@@ -36,9 +36,9 @@
                 <tr class="flex flex-row border-2 border-collapse">
                     <th class="flex-1 border-2 border-collapse">id</th>
                     <th class="flex-1 border-2 border-collapse">Логін</th>
-                    <th class="flex-1 border-2 border-collapse">Дата створення</th>
-                    <th class="flex-1 border-2 border-collapse">Перестворення паролю</th>
-                    <th class="flex-1 border-2 border-collapse">Видалення</th>
+                    <th class="flex-1 border-2 border-collapse"></th>
+                    <th class="flex-1 border-2 border-collapse"></th>
+                    <th class="flex-1 border-2 border-collapse"></th>
                 </tr>
                 @foreach($users as $user)
                     <tr class="flex flex-row border-2 border-collapse">
@@ -54,11 +54,15 @@
                         </td>
                         <td class="flex-1 border-2 border-collapse">
                             <div class="flex h-full align-middle justify-center items-center">
-                                {{ $user->created_at->format('Y-m-d') }}
+                                <a
+                                    href="{{ route('admin.users.user-groups', ['user' => $user]) }}"
+                                    class="py-1 px-3 my-1 rounded-3xl bg-blue-100 hover:bg-blue-200">
+                                    Редагувати групи
+                                </a>
                             </div>
                         </td>
                         <td class="flex-1 border-2 border-collapse">
-                            <form action="{{ route('admin.user.update', ['user' => $user->id]) }}" method="POST">
+                            <form action="{{ route('admin.users.update', ['user' => $user]) }}" method="POST">
                                 @csrf
                                 {{ method_field('PUT') }}
                                 <button class="py-1 px-3 my-1 rounded-3xl bg-blue-100 hover:bg-blue-200">
@@ -67,7 +71,7 @@
                             </form>
                         </td>
                         <td class="flex-1 border-2 border-collapse">
-                            <form action="{{ route('admin.user.delete', ['user' => $user->id]) }}" method="POST">
+                            <form action="{{ route('admin.users.delete', ['user' => $user]) }}" method="POST">
                                 @csrf
                                 {{ method_field('DELETE') }}
                                 <button class="py-1 px-3 my-1 rounded-3xl bg-red-600 hover:bg-red-700 text-white">

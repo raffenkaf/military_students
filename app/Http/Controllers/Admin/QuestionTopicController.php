@@ -34,7 +34,7 @@ class QuestionTopicController extends AdminController
      */
     public function create()
     {
-        return view('admin.question-topic.create');
+        return view('admin.question-topics.create');
     }
 
     /**

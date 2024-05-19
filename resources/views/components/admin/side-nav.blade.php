@@ -25,7 +25,7 @@
                 <a href="{{ route('admin.knowledge-entity-groups') }}">Групи учбових матеріалів</a>
             </li>
 {{--            <li class="m-2 p-1 bg-gray-200 rounded-2xl hover:bg-gray-300">--}}
-{{--                <a href="{{ route('admin.knowledge-entity-group.knowledge-entities') }}">Учбові матеріали</a>--}}
+{{--                <a href="{{ route('admin.knowledge-entity-groups.knowledge-entities') }}">Учбові матеріали</a>--}}
 {{--            </li>--}}
         </ul>
 

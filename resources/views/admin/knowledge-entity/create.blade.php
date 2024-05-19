@@ -7,7 +7,7 @@
 
     <div class="p-3" x-data="{entityType: '{{ \App\Models\Enums\KnowledgeEntityTypes::ARTICLE }}' }">
         <x-admin-form
-            action="{{ route('admin.knowledge-entity-group.knowledge-entity.store', ['knowledgeEntityGroup' => $knowledgeEntityGroup]) }}"
+            action="{{ route('admin.knowledge-entity-groups.knowledge-entities.store', ['knowledgeEntityGroup' => $knowledgeEntityGroup]) }}"
             method="POST"
             route-back="{{ route('admin.knowledge-entity-groups') }}"
             enctype="multipart/form-data"

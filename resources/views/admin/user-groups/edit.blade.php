@@ -7,7 +7,7 @@
 
     <div class="p-3">
         <x-admin-form
-            action="{{ route('admin.user-group.update', ['userGroup' => $userGroup]) }}"
+            action="{{ route('admin.user-groups.update', ['userGroup' => $userGroup]) }}"
             method="POST"
             route-back="{{ route('admin.user-groups') }}"
         >

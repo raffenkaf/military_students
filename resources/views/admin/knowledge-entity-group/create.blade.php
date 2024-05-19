@@ -7,7 +7,7 @@
 
     <div class="p-3">
         <x-admin-form
-            action="{{ route('admin.knowledge-entity-group.store') }}"
+            action="{{ route('admin.knowledge-entity-groups.store') }}"
             method="POST"
             route-back="{{ route('admin.knowledge-entity-groups') }}"
         >

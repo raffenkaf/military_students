@@ -7,7 +7,7 @@
 
     <div class="p-3">
         <x-admin-form
-            action="{{ route('admin.question-topic.store') }}"
+            action="{{ route('admin.question-topics.store') }}"
             method="POST"
             route-back="{{ route('admin.question-topics') }}"
         >

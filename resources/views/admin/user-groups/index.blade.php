@@ -7,7 +7,7 @@
         </x-slot>
         <header class="p-2 w-full flex justify-end">
             <div>
-                <a href="{{ route('admin.user-group.create') }}" class="py-3 px-4 rounded-3xl bg-blue-100 hover:bg-blue-200">
+                <a href="{{ route('admin.user-groups.create') }}" class="py-3 px-4 rounded-3xl bg-blue-100 hover:bg-blue-200">
                     Створити групу
                 </a>
             </div>
@@ -63,7 +63,7 @@
                         <td class="flex-1 border-2 border-collapse">
                             <div class="flex h-full align-middle justify-center items-center">
                                 <a
-                                    href="{{ route('admin.user-group.edit', ['userGroup' => $userGroup]) }}"
+                                    href="{{ route('admin.user-groups.edit', ['userGroup' => $userGroup]) }}"
                                     class="py-1 px-3 my-1 rounded-3xl bg-blue-100 hover:bg-blue-200">
                                     Редагувати
                                 </a>
@@ -71,7 +71,7 @@
                         </td>
                         <td class="flex-1 border-2 border-collapse">
                             <form
-                                action="{{ route('admin.user-group.delete', ['userGroup' => $userGroup]) }}"
+                                action="{{ route('admin.user-groups.delete', ['userGroup' => $userGroup]) }}"
                                 method="POST"
                                 class="flex h-full align-middle justify-center items-center"
                             >

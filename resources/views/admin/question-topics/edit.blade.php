@@ -7,7 +7,7 @@
 
     <div class="p-3">
         <x-admin-form
-            action="{{ route('admin.question-topic.update', ['questionTopic' => $questionTopic]) }}"
+            action="{{ route('admin.question-topics.update', ['questionTopic' => $questionTopic]) }}"
             method="POST"
             route-back="{{ route('admin.question-topics') }}"
         >

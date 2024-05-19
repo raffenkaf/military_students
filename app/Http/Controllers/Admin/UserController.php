@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Models\UserGroup;
 use App\Repositories\Admin\UserRepository;
+use App\Services\AuthHelperService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -22,9 +24,9 @@ class UserController extends AdminController
         return view('admin.users.index', ['users' => $users, 'searchParam' => $searchParam]);
     }
 
-    public function create(UserRepository $repository)
+    public function create(UserRepository $repository, AuthHelperService $authHelperService)
     {
-        $password = $this->generateNewPassword();
+        $password = $authHelperService->generateNewPassword();
         $user = $repository->createWithPassword($password);
 
         return view('admin.users.created', ['user' => $user, 'password' => $password]);
@@ -37,16 +39,16 @@ class UserController extends AdminController
         return redirect()->route('admin.users');
     }
 
-    public function update(UserRepository $userRepository, User $user)
+    public function update(UserRepository $userRepository, User $user, AuthHelperService $authHelperService)
     {
-        $password = $this->generateNewPassword();
+        $password = $authHelperService->generateNewPassword();
         $userRepository->updatePassword($user, $password);
 
         return view('admin.users.password_updated', ['user' => $user, 'password' => $password]);
     }
 
-    private function generateNewPassword(): string
+    public function groupIndex(User $user)
     {
-        return Str::random();
+        return view('admin.users.user-groups', ['user' => $user]);
     }
 }

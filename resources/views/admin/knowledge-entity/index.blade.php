@@ -7,7 +7,7 @@
         </x-slot>
         <header class="p-2 w-full flex justify-end">
             <div>
-                <a href="{{ route('admin.knowledge-entity-group.knowledge-entity.create', ['knowledgeEntityGroup' => $knowledgeEntityGroup]) }}"
+                <a href="{{ route('admin.knowledge-entity-groups.knowledge-entities.create', ['knowledgeEntityGroup' => $knowledgeEntityGroup]) }}"
                    class="py-3 px-4 rounded-3xl bg-blue-100 hover:bg-blue-200"
                 >
                     Створити учбовий матеріал
@@ -59,7 +59,7 @@
                         <td class="flex-1 border-2 border-collapse">
                             <div class="flex h-full align-middle justify-center items-center">
                                 <a
-                                    href="{{ route('admin.knowledge-entity-group.knowledge-entity.edit',
+                                    href="{{ route('admin.knowledge-entity-groups.knowledge-entities.edit',
                                                  ['knowledgeEntityGroup' => $knowledgeEntityGroup, 'knowledgeEntity' => $knowledgeEntity]
                                              )
                                           }}"
@@ -70,7 +70,7 @@
                         </td>
                         <td class="flex-1 border-2 border-collapse">
                             <form
-                                action="{{ route('admin.knowledge-entity-group.knowledge-entity.delete',
+                                action="{{ route('admin.knowledge-entity-groups.knowledge-entities.delete',
                                                ['knowledgeEntityGroup' => $knowledgeEntityGroup, 'knowledgeEntity' => $knowledgeEntity]
                                            )
                                         }}"

@@ -3,12 +3,17 @@
 namespace App\Repositories\Admin;
 
 use App\Models\User;
+use App\Services\AuthHelperService;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\UniqueConstraintViolationException;
 use Str;
 
 class UserRepository
 {
+    public function __construct(public AuthHelperService $authHelperService)
+    {
+    }
+
     public function lastCreated(int $lastCreatedNumber = 20): Collection
     {
         return User::orderBy('id', 'desc')
@@ -20,7 +25,7 @@ class UserRepository
     {
         $user = new User(
             [
-                'login' => Str::random(20),
+                'login' => $this->authHelperService->generateNewLogin(),
                 'password' => $password
             ]
         );
@@ -30,7 +35,7 @@ class UserRepository
         } catch (UniqueConstraintViolationException $exception) {
             // If the login is not unique, we will generate a new one
 
-            $user->login = Str::random(30);
+            $user->login = $this->authHelperService->generateNewLogin(30);
             $user->save();
         }
 

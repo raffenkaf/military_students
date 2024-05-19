@@ -54,7 +54,7 @@ class KnowledgeEntityController extends Controller
         $knowledgeEntityRepository->createEntity($validated);
 
         return redirect()->route(
-            'admin.knowledge-entity-group.knowledge-entities',
+            'admin.knowledge-entity-groups.knowledge-entities',
             ['knowledgeEntityGroup' => $knowledgeEntityGroup]
         );
     }
@@ -95,7 +95,7 @@ class KnowledgeEntityController extends Controller
         $knowledgeEntity->delete();
 
         return redirect()->route(
-            'admin.knowledge-entity-group.knowledge-entities',
+            'admin.knowledge-entity-groups.knowledge-entities',
             ['knowledgeEntityGroup' => $knowledgeEntityGroup]
         );
     }

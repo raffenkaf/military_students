@@ -4,7 +4,7 @@
             <h1 class="text-2xl">Теми тестів</h1>
             <div>
                 <a
-                    href="{{ route('admin.exam.create') }}"
+                    href="{{ route('admin.exams.create') }}"
                     class="py-2 px-4 rounded-3xl bg-blue-100 hover:bg-blue-200"
                 >
                     Запланувати екзамен
@@ -62,7 +62,7 @@
                         <td class="flex-1 border-2 border-collapse">
 {{--                            <div class="flex h-full align-middle justify-center items-center">--}}
 {{--                                <a--}}
-{{--                                    href="{{ route('admin.question-topic.edit', ['questionTopic' => $questionTopic]) }}"--}}
+{{--                                    href="{{ route('admin.question-topics.edit', ['questionTopic' => $questionTopic]) }}"--}}
 {{--                                    class="py-1 px-3 my-1 rounded-3xl bg-blue-100 hover:bg-blue-200">--}}
 {{--                                    Редагувати--}}
 {{--                                </a>--}}
@@ -70,7 +70,7 @@
                         </td>
                         <td class="flex-1 border-2 border-collapse">
 {{--                            <form--}}
-{{--                                action="{{ route('admin.question-topic.delete', ['questionTopic' => $questionTopic]) }}"--}}
+{{--                                action="{{ route('admin.question-topics.delete', ['questionTopic' => $questionTopic]) }}"--}}
 {{--                                method="POST"--}}
 {{--                                class="flex h-full align-middle justify-center items-center"--}}
 {{--                            >--}}

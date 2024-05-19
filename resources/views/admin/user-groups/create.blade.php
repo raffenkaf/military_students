@@ -7,7 +7,7 @@
 
     <div class="p-3">
         <x-admin-form
-            action="{{ route('admin.user-group.store') }}"
+            action="{{ route('admin.user-groups.store') }}"
             method="POST"
             route-back="{{ route('admin.user-groups') }}"
         >

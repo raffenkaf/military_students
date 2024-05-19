@@ -17,7 +17,7 @@
                 Назад
             </a>
         </div>
-        <form action="{{ route('admin.exam.store') }}" method="POST">
+        <form action="{{ route('admin.exams.store') }}" method="POST">
             <div class="flex text-center justify-center border-2 mt-2"
                  :class="{ ['bg-gray-400']: formStage !== 1 }"
             >
@@ -91,7 +91,6 @@
             <div class="flex text-center justify-center border-2 mt-2"
                  x-show="formStage === 2"
             >
-                @csrf
                 <div class="p-3 mt-2 w-3/4" id="second-stage-div">
                     <div class="flex m-auto justify-between items-center">
                         <label for="name" class="p-1 mr-2 flex-1 flex items-center">

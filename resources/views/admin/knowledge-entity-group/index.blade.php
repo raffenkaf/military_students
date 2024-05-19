@@ -7,7 +7,7 @@
         </x-slot>
         <header class="p-2 w-full flex justify-end">
             <div>
-                <a href="{{ route('admin.knowledge-entity-group.create') }}"
+                <a href="{{ route('admin.knowledge-entity-groups.create') }}"
                    class="py-3 px-4 rounded-3xl bg-blue-100 hover:bg-blue-200"
                 >
                     Створити групу знань
@@ -60,7 +60,7 @@
                         <td class="flex-1 border-2 border-collapse">
                             <div class="flex h-full align-middle justify-center items-center">
                                 <a
-                                    href="{{ route('admin.knowledge-entity-group.knowledge-entities', ['knowledgeEntityGroup' => $entityGroup]) }}"
+                                    href="{{ route('admin.knowledge-entity-groups.knowledge-entities', ['knowledgeEntityGroup' => $entityGroup]) }}"
                                     class="py-1 px-3 my-1 rounded-3xl bg-blue-100 hover:bg-blue-200">
                                     Менеджмент матеріалів
                                 </a>
@@ -69,7 +69,7 @@
                         <td class="flex-1 border-2 border-collapse">
                             <div class="flex h-full align-middle justify-center items-center">
                                 <a
-                                    href="{{ route('admin.knowledge-entity-group.edit', ['knowledgeEntityGroup' => $entityGroup]) }}"
+                                    href="{{ route('admin.knowledge-entity-groups.edit', ['knowledgeEntityGroup' => $entityGroup]) }}"
                                     class="py-1 px-3 my-1 rounded-3xl bg-blue-100 hover:bg-blue-200">
                                     Редагувати
                                 </a>
@@ -77,7 +77,7 @@
                         </td>
                         <td class="flex-1 border-2 border-collapse">
                             <form
-                                action="{{ route('admin.knowledge-entity-group.delete', ['knowledgeEntityGroup' => $entityGroup]) }}"
+                                action="{{ route('admin.knowledge-entity-groups.delete', ['knowledgeEntityGroup' => $entityGroup]) }}"
                                 method="POST"
                                 class="flex h-full align-middle justify-center items-center"
                             >

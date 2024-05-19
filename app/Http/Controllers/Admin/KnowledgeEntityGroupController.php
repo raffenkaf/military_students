@@ -23,7 +23,7 @@ class KnowledgeEntityGroupController extends Controller
             $entityGroups = $repository->lastCreated();
         }
 
-        return view('admin.knowledge-entity-group.index', ['entityGroups' => $entityGroups, 'searchParam' => $searchParam]);
+        return view('admin.knowledge-entity-groups.index', ['entityGroups' => $entityGroups, 'searchParam' => $searchParam]);
     }
 
     /**
@@ -31,7 +31,7 @@ class KnowledgeEntityGroupController extends Controller
      */
     public function create()
     {
-        return view('admin.knowledge-entity-group.create');
+        return view('admin.knowledge-entity-groups.create');
     }
 
     /**
