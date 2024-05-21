@@ -23,22 +23,29 @@
     @if (isset($header))
         <header class="bg-white shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                {{ $header }}
+{{--                {{ $header }}--}}
             </div>
         </header>
-    @endif
+{{--    @endif--}}
 
     <!-- Page Content -->
     <main>
         <div class="flex justify-between py-1">
-            @include('components.admin.side-nav')
+{{--            @include('components.admin.side-nav')--}}
             <div class="flex-1 px-2">
                 <div class="bg-white border-4 overflow-hidden shadow-sm sm:rounded-lg">
-                    {{ $slot }}
+{{--                    {{ $slot }}--}}
                 </div>
             </div>
         </div>
     </main>
+
+{{--    @session('status')--}}
+        <div class="p-4 bg-green-100 fixed top-5 right-5 text-3xl">
+{{--            {{ session('status') }}--}}
+
+        </div>
+{{--    @endsession--}}
 </div>
 </body>
 </html>

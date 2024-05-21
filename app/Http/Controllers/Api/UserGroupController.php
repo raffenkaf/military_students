@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserGroupResource;
+use App\Models\UserGroup;
+use Illuminate\Http\Request;
 
 class UserGroupController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json([
-            'userGroups' => [
-                ['id' => 1, 'text' => 'Admin'],
-                ['id' => 2, 'text' => 'User'],
-            ]
-        ]);
+        $userGroups = UserGroupResource::collection(UserGroup::all());
+
+        return $userGroups;
     }
 }

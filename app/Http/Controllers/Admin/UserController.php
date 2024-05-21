@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\Admin\UserUserGroupEditRequest;
 use App\Models\User;
 use App\Models\UserGroup;
 use App\Repositories\Admin\UserRepository;
@@ -50,5 +51,15 @@ class UserController extends AdminController
     public function groupIndex(User $user)
     {
         return view('admin.users.user-groups', ['user' => $user]);
+    }
+
+    public function groupEdit(User $user, UserUserGroupEditRequest $request)
+    {
+        $userGroups = UserGroup::find($request->get('user_groups'));
+        $user->userGroups()->sync($userGroups);
+
+        return redirect()
+            ->route('admin.users.user-groups', ['user' => $user])
+            ->with('success', 'User groups updated');
     }
 }
