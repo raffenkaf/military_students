@@ -2,7 +2,7 @@
     <div class="p-3">
         <x-slot name="header">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                <h1 class="text-2xl">Група знань "{{ $knowledgeEntityGroup->name }}"</h1>
+                Група знань "{{ $knowledgeEntityGroup->name }}"
             </h2>
         </x-slot>
         <header class="p-2 w-full flex justify-end">

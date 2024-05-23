@@ -2,7 +2,7 @@
     <div class="p-3">
         <x-slot name="header">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                <h1 class="text-2xl">Групи користувачів</h1>
+                Групи користувачів
             </h2>
         </x-slot>
         <header class="p-2 w-full flex justify-end">
@@ -34,7 +34,7 @@
                     <th class="flex-1 border-2 border-collapse">id</th>
                     <th class="flex-1 border-2 border-collapse">Назва</th>
                     <th class="flex-1 border-2 border-collapse">Опис</th>
-                    <th class="flex-1 border-2 border-collapse">Дата створення</th>
+                    <th class="flex-1 border-2 border-collapse">Права</th>
                     <th class="flex-1 border-2 border-collapse">Редагувати</th>
                     <th class="flex-1 border-2 border-collapse">Видалення</th>
                 </tr>
@@ -57,7 +57,11 @@
                         </td>
                         <td class="flex-1 border-2 border-collapse">
                             <div class="flex h-full align-middle justify-center items-center">
-                                {{ $userGroup->created_at->format('Y-m-d') }}
+                                <a
+                                    href="{{ route('admin.users.user-groups', ['user' => $user]) }}"
+                                    class="py-1 px-3 my-1 rounded-3xl bg-blue-100 hover:bg-blue-200">
+                                    Редагувати права ({{ implode(', ', $user->userGroupIds()) }})
+                                </a>
                             </div>
                         </td>
                         <td class="flex-1 border-2 border-collapse">

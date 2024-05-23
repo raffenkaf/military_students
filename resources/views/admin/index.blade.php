@@ -1,7 +1,7 @@
 <x-admin-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            <h1 class="text-2xl">Стартова сторінка</h1>
+            Стартова сторінка
         </h2>
     </x-slot>
     <div class="p-6 text-gray-900">
