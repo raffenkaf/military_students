@@ -35,4 +35,9 @@ class UserGroup extends BaseModel
     {
         return $this->hasMany(UserGroupAuthRight::class);
     }
+
+    public function authRightIds(): array
+    {
+        return $this->authRights->pluck('auth_right_id')->toArray();
+    }
 }

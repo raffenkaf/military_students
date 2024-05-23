@@ -59,14 +59,8 @@ class User extends Authenticatable
         );
     }
 
-    public function userGroupIds()
+    public function userGroupIds(): array
     {
-        $userGroupIds = [];
-
-        foreach($this->userGroups as $userGroup) {
-            $userGroupIds[] = $userGroup->id;
-        }
-
-        return $userGroupIds;
+        return $this->userGroups->pluck('id')->toArray();
     }
 }

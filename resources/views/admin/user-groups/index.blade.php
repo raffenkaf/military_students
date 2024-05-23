@@ -60,7 +60,7 @@
                                 <a
                                     href="{{ route('admin.users.user-groups', ['user' => $user]) }}"
                                     class="py-1 px-3 my-1 rounded-3xl bg-blue-100 hover:bg-blue-200">
-                                    Редагувати права ({{ implode(', ', $user->userGroupIds()) }})
+                                    Редагувати права ({{ implode(', ', $userGroup->authRightIds()) }})
                                 </a>
                             </div>
                         </td>
