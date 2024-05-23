@@ -17,6 +17,7 @@ class UserRepository
     public function lastCreated(int $lastCreatedNumber = 20): Collection
     {
         return User::orderBy('id', 'desc')
+            ->with('user_group')
             ->limit($lastCreatedNumber)
             ->get();
     }
@@ -56,6 +57,7 @@ class UserRepository
 
         return User::where('login', 'like', "$searchParam%")
             ->union($idSearch)
+            ->with('user_group')
             ->get();
     }
 }

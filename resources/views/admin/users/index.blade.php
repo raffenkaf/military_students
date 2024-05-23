@@ -36,7 +36,7 @@
                 <tr class="flex flex-row border-2 border-collapse">
                     <th class="flex-1 border-2 border-collapse">id</th>
                     <th class="flex-1 border-2 border-collapse">Логін</th>
-                    <th class="flex-1 border-2 border-collapse"></th>
+                    <th class="flex-1 border-2 border-collapse">Групи</th>
                     <th class="flex-1 border-2 border-collapse"></th>
                     <th class="flex-1 border-2 border-collapse"></th>
                 </tr>
@@ -57,7 +57,7 @@
                                 <a
                                     href="{{ route('admin.users.user-groups', ['user' => $user]) }}"
                                     class="py-1 px-3 my-1 rounded-3xl bg-blue-100 hover:bg-blue-200">
-                                    Редагувати групи
+                                    Редагувати групи ({{ implode(', ', $user->userGroupIds()) }})
                                 </a>
                             </div>
                         </td>

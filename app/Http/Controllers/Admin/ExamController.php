@@ -50,6 +50,10 @@ class ExamController extends Controller
 
         $exam->save();
 
+        $request
+            ->session()
+            ->flash('success', "Екзамен призначений(id - {$exam->id})");
+
         return redirect()->route('admin.exams.index');
     }
 

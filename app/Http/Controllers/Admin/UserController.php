@@ -25,7 +25,11 @@ class UserController extends AdminController
         return view('admin.users.index', ['users' => $users, 'searchParam' => $searchParam]);
     }
 
-    public function create(UserRepository $repository, AuthHelperService $authHelperService)
+    public function create(
+        UserRepository $repository,
+        AuthHelperService $authHelperService,
+        Request $request
+    )
     {
         $password = $authHelperService->generateNewPassword();
         $user = $repository->createWithPassword($password);
@@ -33,11 +37,14 @@ class UserController extends AdminController
         return view('admin.users.created', ['user' => $user, 'password' => $password]);
     }
 
-    public function destroy(User $user)
+    public function destroy(User $user, Request $request)
     {
         $user->delete();
 
-        return redirect()->route('admin.users');
+        $request->session()->flash('success', "Користувач видалений(id - {$user->id})");
+
+        return redirect()
+            ->route('admin.users');
     }
 
     public function update(UserRepository $userRepository, User $user, AuthHelperService $authHelperService)
@@ -58,8 +65,9 @@ class UserController extends AdminController
         $userGroups = UserGroup::find($request->get('user_groups'));
         $user->userGroups()->sync($userGroups);
 
+        $request->session()->flash('success', "Групи збережені");
+
         return redirect()
-            ->route('admin.users.user-groups', ['user' => $user])
-            ->with('success', 'User groups updated');
+            ->route('admin.users.user-groups', ['user' => $user]);
     }
 }

@@ -44,6 +44,10 @@ class UserGroupController extends AdminController
         $userGroup = new UserGroup($validated);
         $userGroup->save();
 
+        $request
+            ->session()
+            ->flash('success', "Група створена(id - {$userGroup->id})");
+
         return redirect()->route('admin.user-groups');
     }
 
@@ -73,15 +77,23 @@ class UserGroupController extends AdminController
         $userGroup->fill($validated);
         $userGroup->save();
 
+        $request
+            ->session()
+            ->flash('success', "Група оновлена(id - {$userGroup->id})");
+
         return redirect()->route('admin.user-groups');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(UserGroup $userGroup)
+    public function destroy(UserGroup $userGroup, Request $request)
     {
         $userGroup->delete();
+
+        $request
+            ->session()
+            ->flash('success', "Група видалена(id - {$userGroup->id})");
 
         return redirect()->route('admin.user-groups');
     }

@@ -47,6 +47,10 @@ class QuestionTopicController extends AdminController
         $questionTopic = new QuestionTopic($validated);
         $questionTopic->save();
 
+        $request
+            ->session()
+            ->flash('success', "Тема питань створена(id - {$questionTopic->id})");
+
         return redirect()->route('admin.question-topics');
     }
 
@@ -76,15 +80,23 @@ class QuestionTopicController extends AdminController
         $questionTopic->fill($validated);
         $questionTopic->save();
 
+        $request
+            ->session()
+            ->flash('success', "Тема питань оновлена(id - {$questionTopic->id})");
+
         return redirect()->route('admin.question-topics');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(QuestionTopic $questionTopic)
+    public function destroy(QuestionTopic $questionTopic, Request $request)
     {
         $questionTopic->delete();
+
+        $request
+            ->session()
+            ->flash('success', "Тема питань видалена(id - {$questionTopic->id})");
 
         return redirect()->route('admin.question-topics');
     }

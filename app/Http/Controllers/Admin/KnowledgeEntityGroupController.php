@@ -44,6 +44,10 @@ class KnowledgeEntityGroupController extends Controller
         $knowledgeEntityGroup = new KnowledgeEntityGroup($validated);
         $knowledgeEntityGroup->save();
 
+        $request
+            ->session()
+            ->flash('success', "Тема знань оновлена(id - {$knowledgeEntityGroup->id})");
+
         return redirect()->route('admin.knowledge-entity-groups');
     }
 

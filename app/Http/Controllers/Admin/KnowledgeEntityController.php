@@ -51,7 +51,11 @@ class KnowledgeEntityController extends Controller
         $validated['studyable'] = $studyable;
         $validated['creator_user_id'] = auth()->id();
         $validated['knowledge_entity_group_id'] = $knowledgeEntityGroup->id;
-        $knowledgeEntityRepository->createEntity($validated);
+        $knowledgeEntity = $knowledgeEntityRepository->createEntity($validated);
+
+        $request
+            ->session()
+            ->flash('success', "Одиниця знань створена(id - {$knowledgeEntity->id})");
 
         return redirect()->route(
             'admin.knowledge-entity-groups.knowledge-entities',
@@ -89,10 +93,16 @@ class KnowledgeEntityController extends Controller
     public function destroy(
         KnowledgeEntityGroup $knowledgeEntityGroup,
         KnowledgeEntity $knowledgeEntity,
-        KnowledgeEntityRepository $knowledgeEntityRepository)
+        KnowledgeEntityRepository $knowledgeEntityRepository,
+        Request $request
+    )
     {
         $knowledgeEntityRepository->deleteStudyable($knowledgeEntity);
         $knowledgeEntity->delete();
+
+        $request
+            ->session()
+            ->flash('success', "Одиниця знань видалена(id - {$knowledgeEntity->id})");
 
         return redirect()->route(
             'admin.knowledge-entity-groups.knowledge-entities',
