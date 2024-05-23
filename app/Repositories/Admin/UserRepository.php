@@ -6,7 +6,6 @@ use App\Models\User;
 use App\Services\AuthHelperService;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\UniqueConstraintViolationException;
-use Str;
 
 class UserRepository
 {
