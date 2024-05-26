@@ -6,11 +6,13 @@ use App\Traits\GetShortDescriptionTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection;
 
 /**
  * @property integer id
  * @property string name
  * @property string description
+ * @property AuthRight[] authRights
  */
 class UserGroup extends BaseModel
 {
@@ -33,11 +35,11 @@ class UserGroup extends BaseModel
 
     public function authRights(): HasMany
     {
-        return $this->hasMany(UserGroupAuthRight::class);
+        return $this->hasMany(AuthRight::class);
     }
 
-    public function authRightIds(): array
+    public function accessTypeIds(): Collection
     {
-        return $this->authRights->pluck('auth_right_id')->toArray();
+        return $this->authRights->pluck('access_type');
     }
 }

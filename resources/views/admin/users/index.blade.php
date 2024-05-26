@@ -55,7 +55,7 @@
                         <td class="flex-1 border-2 border-collapse">
                             <div class="flex h-full align-middle justify-center items-center">
                                 <a
-                                    href="{{ route('admin.users.user-groups', ['user' => $user]) }}"
+                                    href="{{ route('admin.users.user-groups.edit', ['user' => $user]) }}"
                                     class="py-1 px-3 my-1 rounded-3xl bg-blue-100 hover:bg-blue-200">
                                     Редагувати групи ({{ implode(', ', $user->userGroupIds()) }})
                                 </a>

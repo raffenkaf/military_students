@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
@@ -11,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string access_type
  * @property array access_details
  */
-class UserGroupAuthRight extends BaseModel
+class AuthRight extends BaseModel
 {
     protected $fillable = [
         'user_group_id',

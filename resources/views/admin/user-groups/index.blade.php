@@ -7,7 +7,8 @@
         </x-slot>
         <header class="p-2 w-full flex justify-end">
             <div>
-                <a href="{{ route('admin.user-groups.create') }}" class="py-3 px-4 rounded-3xl bg-blue-100 hover:bg-blue-200">
+                <a href="{{ route('admin.user-groups.create') }}"
+                   class="py-3 px-4 rounded-3xl bg-blue-100 hover:bg-blue-200">
                     Створити групу
                 </a>
             </div>
@@ -58,26 +59,26 @@
                         <td class="flex-1 border-2 border-collapse">
                             <div class="flex h-full align-middle justify-center items-center">
                                 <a
-                                    href="{{ route('admin.users.user-groups', ['user' => $user]) }}"
-                                    class="py-1 px-3 my-1 rounded-3xl bg-blue-100 hover:bg-blue-200">
-                                    Редагувати права ({{ implode(', ', $userGroup->authRightIds()) }})
+                                        href="{{ route('admin.user-groups.auth-rights', ['userGroup' => $userGroup]) }}"
+                                        class="py-1 px-3 my-1 rounded-3xl bg-blue-100 hover:bg-blue-200">
+                                    Редагувати права ({{ implode(', ', $userGroup->accessTypeIds()->toArray()) }})
                                 </a>
                             </div>
                         </td>
                         <td class="flex-1 border-2 border-collapse">
                             <div class="flex h-full align-middle justify-center items-center">
                                 <a
-                                    href="{{ route('admin.user-groups.edit', ['userGroup' => $userGroup]) }}"
-                                    class="py-1 px-3 my-1 rounded-3xl bg-blue-100 hover:bg-blue-200">
+                                        href="{{ route('admin.user-groups.edit', ['userGroup' => $userGroup]) }}"
+                                        class="py-1 px-3 my-1 rounded-3xl bg-blue-100 hover:bg-blue-200">
                                     Редагувати
                                 </a>
                             </div>
                         </td>
                         <td class="flex-1 border-2 border-collapse">
                             <form
-                                action="{{ route('admin.user-groups.delete', ['userGroup' => $userGroup]) }}"
-                                method="POST"
-                                class="flex h-full align-middle justify-center items-center"
+                                    action="{{ route('admin.user-groups.delete', ['userGroup' => $userGroup]) }}"
+                                    method="POST"
+                                    class="flex h-full align-middle justify-center items-center"
                             >
                                 @csrf
                                 {{ method_field('DELETE') }}

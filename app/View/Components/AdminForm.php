@@ -16,6 +16,7 @@ class AdminForm extends Component
         public string $routeBack,
         public string $method = 'POST',
         public string $enctype = 'multipart/form-data',
+        public string $buttonText = 'Зберегти',
     )
     {
     }

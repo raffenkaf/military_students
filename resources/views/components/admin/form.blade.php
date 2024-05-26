@@ -15,7 +15,7 @@
             type="submit" class="py-1 px-10 mt-4 my-1 rounded-3xl bg-blue-100 hover:bg-blue-200"
             :disabled="buttonDisabled"
         >
-            Зберегти
+            {{ $buttonText }}
         </button>
     </div>
 </form>

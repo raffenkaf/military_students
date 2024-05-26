@@ -55,12 +55,12 @@ class UserController extends AdminController
         return view('admin.users.password_updated', ['user' => $user, 'password' => $password]);
     }
 
-    public function groupIndex(User $user)
+    public function groupEdit(User $user)
     {
-        return view('admin.users.user-groups', ['user' => $user]);
+        return view('admin.users.user-groups-edit', ['user' => $user]);
     }
 
-    public function groupEdit(User $user, UserUserGroupEditRequest $request)
+    public function groupUpdate(User $user, UserUserGroupEditRequest $request)
     {
         $userGroups = UserGroup::find($request->get('user_groups'));
         $user->userGroups()->sync($userGroups);
@@ -68,6 +68,6 @@ class UserController extends AdminController
         $request->session()->flash('success', "Групи збережені");
 
         return redirect()
-            ->route('admin.users.user-groups', ['user' => $user]);
+            ->route('admin.users.user-groups.edit', ['user' => $user]);
     }
 }

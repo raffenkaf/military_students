@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AuthRightController;
 use App\Http\Controllers\Admin\ExamController;
 use App\Http\Controllers\Admin\KnowledgeEntityController;
 use App\Http\Controllers\Admin\KnowledgeEntityGroupController;
@@ -21,10 +22,10 @@ Route::delete('/users/{user}', [UserController::class, 'destroy'])
 Route::put('/users/{user}', [UserController::class, 'update'])
     ->name('admin.users.update');
 
-Route::get('/users/{user}/user-groups', [UserController::class, 'groupIndex'])
-    ->name('admin.users.user-groups');
-Route::put('/users/{user}/user-groups', [UserController::class, 'groupEdit'])
+Route::get('/users/{user}/user-groups', [UserController::class, 'groupEdit'])
     ->name('admin.users.user-groups.edit');
+Route::put('/users/{user}/user-groups', [UserController::class, 'groupUpdate'])
+    ->name('admin.users.user-groups.update');
 
 Route::get('/user-groups', [UserGroupController::class, 'index'])
     ->name('admin.user-groups');
@@ -38,9 +39,14 @@ Route::put('/user-groups/{userGroup}', [UserGroupController::class, 'update'])
     ->name('admin.user-groups.update');
 Route::delete('/user-groups/{userGroup}', [UserGroupController::class, 'destroy'])
     ->name('admin.user-groups.delete');
-Route::get('/user-groups/{userGroup}/rights', function () {
-    return view('admin/index');
-})->name('admin.user-groups.rights');
+
+Route::get('/user-groups/{userGroup}/rights', [AuthRightController::class, 'index'])
+    ->name('admin.user-groups.auth-rights');
+Route::post('/user-groups/{userGroup}/rights', [AuthRightController::class, 'store'])
+    ->name('admin.user-groups.auth-rights.store');
+Route::delete('/user-groups/{userGroup}/rights/{authRight}', [AuthRightController::class, 'destroy'])
+    ->scopeBindings()
+    ->name('admin.user-groups.auth-rights.delete');
 
 Route::get('/question-topics', [QuestionTopicController::class, 'index'])
     ->name('admin.question-topics');

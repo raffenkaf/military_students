@@ -2,7 +2,7 @@
 
 namespace App\Models\Enums;
 
-enum AuthRights: int
+enum AccessTypes: int
 {
     case ADMIN_MANAGE_USERS = 1;
     case ADMIN_MANAGE_QUESTION_TOPICS = 2;
