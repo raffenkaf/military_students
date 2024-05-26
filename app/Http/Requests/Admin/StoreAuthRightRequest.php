@@ -8,7 +8,7 @@ class StoreAuthRightRequest extends BaseAdminFormRequest
     {
         return [
             'access_type' => 'required|integer',
-            'description' => 'nullable|string',
+            'access_details' => 'nullable',
         ];
     }
 }

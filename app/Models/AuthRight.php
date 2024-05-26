@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Enums\AccessTypes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
@@ -25,5 +26,15 @@ class AuthRight extends BaseModel
     public function userGroup(): BelongsTo
     {
         return $this->belongsTo(UserGroup::class);
+    }
+
+    public function informationAboutAccess(): string
+    {
+        if ($this->access_type === AccessTypes::SOME_STUDY_MATERIALS->value) {
+            return $this->access_type
+                . ', групи знань '
+                . implode(', ', $this->access_details['knowledge_entity_groups']);
+        }
+        return $this->access_type;
     }
 }

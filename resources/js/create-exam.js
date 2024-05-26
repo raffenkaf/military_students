@@ -42,12 +42,13 @@ $('#exam_user_groups').select2({
     ajax: {
         url: '/api/user-groups',
         dataType: 'json',
-        processResults: function (data) {
-            if (!data.userGroups) {
+        processResults: function (response) {
+            const data = response.data;
+            if (!data.length) {
                 alert('No user groups found');
             }
             return {
-                results: data.userGroups
+                results: data
             };
         }
     }
