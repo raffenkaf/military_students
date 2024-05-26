@@ -23,7 +23,6 @@
                             name="user_groups[]"
                             id="user_groups"
                             multiple="multiple"
-                            required
                         >
                             @foreach($user->userGroups as $userGroup)
                                 <option value="{{ $userGroup->id }}" selected>{{ $userGroup->name }}</option>

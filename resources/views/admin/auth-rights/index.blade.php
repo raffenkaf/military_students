@@ -58,7 +58,7 @@
                 <x-admin-form
                     action="{{ route('admin.user-groups.auth-rights.store', ['userGroup' => $userGroup]) }}"
                     method="POST"
-                    route-back="{{ route('admin.user-groups.auth-rights', ['userGroup' => $userGroup]) }}"
+                    route-back="{{ route('admin.user-groups', ['userGroup' => $userGroup]) }}"
                     buttonText="Додати"
                 >
                     <div x-data="{accessType: 0}" class="w-full flex flex-col justify-center items-center">

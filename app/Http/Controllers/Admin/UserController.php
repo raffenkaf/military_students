@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\UserGroup;
 use App\Repositories\Admin\UserRepository;
 use App\Services\AuthHelperService;
+use App\Services\AuthRightService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -60,11 +61,11 @@ class UserController extends AdminController
         return view('admin.users.user-groups-edit', ['user' => $user]);
     }
 
-    public function groupUpdate(User $user, UserUserGroupEditRequest $request)
+    public function groupUpdate(User $user, UserUserGroupEditRequest $request, AuthRightService $authRightService)
     {
         $userGroups = UserGroup::find($request->get('user_groups'));
         $user->userGroups()->sync($userGroups);
-
+        $authRightService->clearUserCache($user);
         $request->session()->flash('success', "Групи збережені");
 
         return redirect()

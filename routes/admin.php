@@ -13,61 +13,67 @@ Route::get('/dashboard', function () {
     return view('admin/index');
 })->name('admin.dashboard');
 
-Route::get('/users', [UserController::class, 'index'])
-    ->name('admin.users');
-Route::post('/users', [UserController::class, 'create'])
-    ->name('admin.users.store');
-Route::delete('/users/{user}', [UserController::class, 'destroy'])
-    ->name('admin.users.delete');
-Route::put('/users/{user}', [UserController::class, 'update'])
-    ->name('admin.users.update');
+Route::middleware('can:manage,App\Models\User')->group(function () {
+    Route::get('/users', [UserController::class, 'index'])
+        ->name('admin.users')
+        ->can('manage', App\Models\User::class);
+    Route::post('/users', [UserController::class, 'create'])
+        ->name('admin.users.store');
+    Route::delete('/users/{user}', [UserController::class, 'destroy'])
+        ->name('admin.users.delete');
+    Route::put('/users/{user}', [UserController::class, 'update'])
+        ->name('admin.users.update');
 
-Route::get('/users/{user}/user-groups', [UserController::class, 'groupEdit'])
-    ->name('admin.users.user-groups.edit');
-Route::put('/users/{user}/user-groups', [UserController::class, 'groupUpdate'])
-    ->name('admin.users.user-groups.update');
+    Route::get('/users/{user}/user-groups', [UserController::class, 'groupEdit'])
+        ->name('admin.users.user-groups.edit');
+    Route::put('/users/{user}/user-groups', [UserController::class, 'groupUpdate'])
+        ->name('admin.users.user-groups.update');
 
-Route::get('/user-groups', [UserGroupController::class, 'index'])
-    ->name('admin.user-groups');
-Route::get('/user-groups/create', [UserGroupController::class, 'create'])
-    ->name('admin.user-groups.create');
-Route::post('/user-groups', [UserGroupController::class, 'store'])
-    ->name('admin.user-groups.store');
-Route::get('/user-groups/{userGroup}/edit', [UserGroupController::class, 'edit'])
-    ->name('admin.user-groups.edit');
-Route::put('/user-groups/{userGroup}', [UserGroupController::class, 'update'])
-    ->name('admin.user-groups.update');
-Route::delete('/user-groups/{userGroup}', [UserGroupController::class, 'destroy'])
-    ->name('admin.user-groups.delete');
+    Route::get('/user-groups', [UserGroupController::class, 'index'])
+        ->name('admin.user-groups');
+    Route::get('/user-groups/create', [UserGroupController::class, 'create'])
+        ->name('admin.user-groups.create');
+    Route::post('/user-groups', [UserGroupController::class, 'store'])
+        ->name('admin.user-groups.store');
+    Route::get('/user-groups/{userGroup}/edit', [UserGroupController::class, 'edit'])
+        ->name('admin.user-groups.edit');
+    Route::put('/user-groups/{userGroup}', [UserGroupController::class, 'update'])
+        ->name('admin.user-groups.update');
+    Route::delete('/user-groups/{userGroup}', [UserGroupController::class, 'destroy'])
+        ->name('admin.user-groups.delete');
 
-Route::get('/user-groups/{userGroup}/rights', [AuthRightController::class, 'index'])
-    ->name('admin.user-groups.auth-rights');
-Route::post('/user-groups/{userGroup}/rights', [AuthRightController::class, 'store'])
-    ->name('admin.user-groups.auth-rights.store');
-Route::delete('/user-groups/{userGroup}/rights/{authRight}', [AuthRightController::class, 'destroy'])
-    ->scopeBindings()
-    ->name('admin.user-groups.auth-rights.delete');
+    Route::get('/user-groups/{userGroup}/rights', [AuthRightController::class, 'index'])
+        ->name('admin.user-groups.auth-rights');
+    Route::post('/user-groups/{userGroup}/rights', [AuthRightController::class, 'store'])
+        ->name('admin.user-groups.auth-rights.store');
+    Route::delete('/user-groups/{userGroup}/rights/{authRight}', [AuthRightController::class, 'destroy'])
+        ->scopeBindings()
+        ->name('admin.user-groups.auth-rights.delete');
+});
 
-Route::get('/question-topics', [QuestionTopicController::class, 'index'])
-    ->name('admin.question-topics');
-Route::get('/question-topics/create', [QuestionTopicController::class, 'create'])
-    ->name('admin.question-topics.create');
-Route::post('/question-topics', [QuestionTopicController::class, 'store'])
-    ->name('admin.question-topics.store');
-Route::delete('/question-topics/{questionTopic}', [QuestionTopicController::class, 'destroy'])
-    ->name('admin.question-topics.delete');
-Route::get('/question-topics/{questionTopic}/edit', [QuestionTopicController::class, 'edit'])
-    ->name('admin.question-topics.edit');
-Route::put('/question-topics/{questionTopic}', [QuestionTopicController::class, 'update'])
-    ->name('admin.question-topics.update');
+Route::middleware('can:manage,App\Models\QuestionTopic')->group(function () {
+    Route::get('/question-topics', [QuestionTopicController::class, 'index'])
+        ->name('admin.question-topics')
+        ->can('manage', App\Models\QuestionTopic::class);
+    Route::get('/question-topics/create', [QuestionTopicController::class, 'create'])
+        ->name('admin.question-topics.create');
+    Route::post('/question-topics', [QuestionTopicController::class, 'store'])
+        ->name('admin.question-topics.store');
+    Route::delete('/question-topics/{questionTopic}', [QuestionTopicController::class, 'destroy'])
+        ->name('admin.question-topics.delete');
+    Route::get('/question-topics/{questionTopic}/edit', [QuestionTopicController::class, 'edit'])
+        ->name('admin.question-topics.edit');
+    Route::put('/question-topics/{questionTopic}', [QuestionTopicController::class, 'update'])
+        ->name('admin.question-topics.update');
 
-Route::get('/question-topic/{questionTopicId}/questions', function () {
-    return view('admin/index');
-})->name('admin.question-topics.questions');
+    Route::get('/question-topic/{questionTopicId}/questions', function () {
+        return view('admin/index');
+    })->name('admin.question-topics.questions');
 
-Route::get('/question-topic/{questionTopicId}/questions/{questionId}/options', function () {
-    return view('admin/index');
-})->name('admin.question-topics.question.answers');
+    Route::get('/question-topic/{questionTopicId}/questions/{questionId}/options', function () {
+        return view('admin/index');
+    })->name('admin.question-topics.question.answers');
+});
 
 Route::get('/exams', [ExamController::class, 'index'])
     ->name('admin.exams');

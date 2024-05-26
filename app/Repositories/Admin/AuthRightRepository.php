@@ -15,7 +15,7 @@ class AuthRightRepository
             'access_type' => $validated['access_type']
         ]);
 
-        $authRight->access_details = '';
+        $authRight->access_details = [];
         if ($authRight->access_type === (string)AccessTypes::SOME_STUDY_MATERIALS->value) {
             $authRight->access_details = ['knowledge_entity_groups' => $validated['access_details']];
         }
