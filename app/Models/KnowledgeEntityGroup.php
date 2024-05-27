@@ -16,7 +16,8 @@ class KnowledgeEntityGroup extends BaseModel
 
     protected $fillable = [
         'name',
-        'description'
+        'description',
+        'is_public',
     ];
 
     public function knowledgeEntities(): HasMany

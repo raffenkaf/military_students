@@ -9,6 +9,7 @@ class AdminLayout extends Component
 {
     public function render(): View
     {
-        return view('layouts.admin');
+        $isAdmin = app('App\Services\AuthRightService')->isAdmin(auth()->user());
+        return view('layouts.admin', ['isAdmin' => $isAdmin]);
     }
 }

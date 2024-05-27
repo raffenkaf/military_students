@@ -12,6 +12,8 @@ class AppLayout extends Component
      */
     public function render(): View
     {
-        return view('layouts.app');
+        $isAdmin = app('App\Services\AuthRightService')->isAdmin(auth()->user());
+
+        return view('layouts.app', ['isAdmin' => $isAdmin]);
     }
 }

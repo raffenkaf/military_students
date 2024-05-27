@@ -35,7 +35,7 @@
                 <tr class="flex flex-row border-2 border-collapse">
                     <th class="flex-1 border-2 border-collapse">id</th>
                     <th class="flex-1 border-2 border-collapse">Назва</th>
-                    <th class="flex-1 border-2 border-collapse">Опис</th>
+                    <th class="flex-1 border-2 border-collapse">Публічність</th>
                     <th class="flex-1 border-2 border-collapse"></th>
                     <th class="flex-1 border-2 border-collapse"></th>
                     <th class="flex-1 border-2 border-collapse"></th>
@@ -54,7 +54,7 @@
                         </td>
                         <td class="flex-1 border-2 border-collapse">
                             <div class="flex h-full align-middle justify-center items-center">
-                                {{ $entityGroup->shortDescription() }}
+                                {{ $entityGroup->is_public ? 'Публічна' : 'Непублічна' }}
                             </div>
                         </td>
                         <td class="flex-1 border-2 border-collapse">

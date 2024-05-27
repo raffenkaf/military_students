@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\Admin\UserUserGroupEditRequest;
+use App\Http\Requests\Admin\UpdateUserUserGroupRequest;
 use App\Models\User;
 use App\Models\UserGroup;
 use App\Repositories\Admin\UserRepository;
@@ -61,7 +61,7 @@ class UserController extends AdminController
         return view('admin.users.user-groups-edit', ['user' => $user]);
     }
 
-    public function groupUpdate(User $user, UserUserGroupEditRequest $request, AuthRightService $authRightService)
+    public function groupUpdate(User $user, UpdateUserUserGroupRequest $request, AuthRightService $authRightService)
     {
         $userGroups = UserGroup::find($request->get('user_groups'));
         $user->userGroups()->sync($userGroups);

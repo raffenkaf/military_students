@@ -46,7 +46,7 @@ class KnowledgeEntityGroupController extends Controller
 
         $request
             ->session()
-            ->flash('success', "Тема знань оновлена(id - {$knowledgeEntityGroup->id})");
+            ->flash('success', "Група знань створена(id - {$knowledgeEntityGroup->id})");
 
         return redirect()->route('admin.knowledge-entity-groups');
     }

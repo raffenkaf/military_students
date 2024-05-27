@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Web\IndexController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [IndexController::class, 'guestIndex'])->name('home');
 
 Route::middleware('guest')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
@@ -31,6 +30,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('scheduled-exams', function () {
         // TEMP stub
-        return view('welcome');
+        return view('guest-index');
     })->name('scheduled-exams');
 });

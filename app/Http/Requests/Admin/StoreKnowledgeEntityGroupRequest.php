@@ -11,6 +11,7 @@ class StoreKnowledgeEntityGroupRequest extends BaseAdminFormRequest
         return [
             'name' => 'required|string|max:255',
             'description' => 'required|string',
+            'is_public' => 'sometimes|boolean',
         ];
     }
 }

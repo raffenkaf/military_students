@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\DTOs\AuthRightDTO;
 use App\Models\AuthRight;
+use App\Models\Enums\AdminAccessTypes;
 use App\Models\User;
 use App\Models\UserGroup;
 use Illuminate\Support\Facades\Cache;
@@ -44,5 +45,18 @@ class AuthRightService
     public function clearUserCache(User $user): void
     {
         Cache::forget($this->cacheKeyService->getKeyForAuthRights($user));
+    }
+
+    public function isAdmin(User $user): bool
+    {
+        foreach ($this->getAuthRights($user) as $accessRight) {
+            foreach (AdminAccessTypes::cases() as $adminAccessType) {
+                if ($accessRight->accessType === $adminAccessType->value) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }
