@@ -75,48 +75,54 @@ Route::middleware('can:manage,App\Models\QuestionTopic')->group(function () {
     })->name('admin.question-topics.question.answers');
 });
 
-Route::get('/exams', [ExamController::class, 'index'])
-    ->name('admin.exams');
-Route::get('/exams/create', [ExamController::class, 'create'])
-    ->name('admin.exams.create');
-Route::post('/exams', [ExamController::class, 'store'])
-    ->name('admin.exams.store');
-Route::delete('/exams/{questionTopic}', [ExamController::class, 'destroy'])
-    ->name('admin.exams.delete');
-Route::get('/exams/{questionTopic}/edit', [ExamController::class, 'edit'])
-    ->name('admin.exams.edit');
-Route::put('/exams/{questionTopic}', [ExamController::class, 'update'])
-    ->name('admin.exams.update');
+Route::middleware('can:manage,App\Models\Exam')->group(function () {
+    Route::get('/exams', [ExamController::class, 'index'])
+        ->name('admin.exams');
+    Route::get('/exams/create', [ExamController::class, 'create'])
+        ->name('admin.exams.create');
+    Route::post('/exams', [ExamController::class, 'store'])
+        ->name('admin.exams.store');
+    Route::delete('/exams/{questionTopic}', [ExamController::class, 'destroy'])
+        ->name('admin.exams.delete');
+    Route::get('/exams/{questionTopic}/edit', [ExamController::class, 'edit'])
+        ->name('admin.exams.edit');
+    Route::put('/exams/{questionTopic}', [ExamController::class, 'update'])
+        ->name('admin.exams.update');
+});
 
-Route::get('/knowledge-entity-groups', [KnowledgeEntityGroupController::class, 'index'])
-    ->name('admin.knowledge-entity-groups');
-Route::get('/knowledge-entity-groups/create', [KnowledgeEntityGroupController::class, 'create'])
-    ->name('admin.knowledge-entity-groups.create');
-Route::post('/knowledge-entity-groups', [KnowledgeEntityGroupController::class, 'store'])
-    ->name('admin.knowledge-entity-groups.store');
-Route::get('/knowledge-entity-groups/{knowledgeEntityGroup}/edit', [KnowledgeEntityGroupController::class, 'edit'])
-    ->name('admin.knowledge-entity-groups.edit');
-Route::put('/knowledge-entity-groups/{knowledgeEntityGroup}', [KnowledgeEntityGroupController::class, 'update'])
-    ->name('admin.knowledge-entity-groups.update');
-Route::delete('/knowledge-entity-groups/{knowledgeEntityGroup}', [KnowledgeEntityGroupController::class, 'destroy'])
-    ->name('admin.knowledge-entity-groups.delete');
+Route::middleware('can:manage,App\Models\KnowledgeEntity')->group(function () {
+    Route::get('/knowledge-entity-groups', [KnowledgeEntityGroupController::class, 'index'])
+        ->name('admin.knowledge-entity-groups');
+    Route::get('/knowledge-entity-groups/create', [KnowledgeEntityGroupController::class, 'create'])
+        ->name('admin.knowledge-entity-groups.create');
+    Route::post('/knowledge-entity-groups', [KnowledgeEntityGroupController::class, 'store'])
+        ->name('admin.knowledge-entity-groups.store');
+    Route::get('/knowledge-entity-groups/{knowledgeEntityGroup}/edit', [KnowledgeEntityGroupController::class, 'edit'])
+        ->name('admin.knowledge-entity-groups.edit');
+    Route::put('/knowledge-entity-groups/{knowledgeEntityGroup}', [KnowledgeEntityGroupController::class, 'update'])
+        ->name('admin.knowledge-entity-groups.update');
+    Route::delete('/knowledge-entity-groups/{knowledgeEntityGroup}', [KnowledgeEntityGroupController::class, 'destroy'])
+        ->name('admin.knowledge-entity-groups.delete');
 
-Route::get('/knowledge-entity-group/{knowledgeEntityGroup}/knowledge-entities', [KnowledgeEntityController::class, 'index'])
-    ->name('admin.knowledge-entity-groups.knowledge-entities');
-Route::get('/knowledge-entity-group/{knowledgeEntityGroup}/knowledge-entities/create', [KnowledgeEntityController::class, 'create'])
-    ->name('admin.knowledge-entity-groups.knowledge-entities.create');
-Route::post('/knowledge-entity-group/{knowledgeEntityGroup}/knowledge-entities', [KnowledgeEntityController::class, 'store'])
-    ->name('admin.knowledge-entity-groups.knowledge-entities.store');
-Route::get('/knowledge-entity-group/{knowledgeEntityGroup}/knowledge-entities/{knowledgeEntity}/edit', [KnowledgeEntityController::class, 'edit'])
-    ->scopeBindings()
-    ->name('admin.knowledge-entity-groups.knowledge-entities.edit');
-Route::put('/knowledge-entity-group/{knowledgeEntityGroup}/knowledge-entities/{knowledgeEntity}', [KnowledgeEntityController::class, 'update'])
-    ->scopeBindings()
-    ->name('admin.knowledge-entity-groups.knowledge-entities.update');
-Route::delete('/knowledge-entity-group/{knowledgeEntityGroup}/knowledge-entities/{knowledgeEntity}', [KnowledgeEntityController::class, 'destroy'])
-    ->scopeBindings()
-    ->name('admin.knowledge-entity-groups.knowledge-entities.delete');
+    Route::get('/knowledge-entity-group/{knowledgeEntityGroup}/knowledge-entities', [KnowledgeEntityController::class, 'index'])
+        ->name('admin.knowledge-entity-groups.knowledge-entities');
+    Route::get('/knowledge-entity-group/{knowledgeEntityGroup}/knowledge-entities/create', [KnowledgeEntityController::class, 'create'])
+        ->name('admin.knowledge-entity-groups.knowledge-entities.create');
+    Route::post('/knowledge-entity-group/{knowledgeEntityGroup}/knowledge-entities', [KnowledgeEntityController::class, 'store'])
+        ->name('admin.knowledge-entity-groups.knowledge-entities.store');
+    Route::get('/knowledge-entity-group/{knowledgeEntityGroup}/knowledge-entities/{knowledgeEntity}/edit', [KnowledgeEntityController::class, 'edit'])
+        ->scopeBindings()
+        ->name('admin.knowledge-entity-groups.knowledge-entities.edit');
+    Route::put('/knowledge-entity-group/{knowledgeEntityGroup}/knowledge-entities/{knowledgeEntity}', [KnowledgeEntityController::class, 'update'])
+        ->scopeBindings()
+        ->name('admin.knowledge-entity-groups.knowledge-entities.update');
+    Route::delete('/knowledge-entity-group/{knowledgeEntityGroup}/knowledge-entities/{knowledgeEntity}', [KnowledgeEntityController::class, 'destroy'])
+        ->scopeBindings()
+        ->name('admin.knowledge-entity-groups.knowledge-entities.delete');
+});
 
-Route::get('/exam-results', function () {
-    return view('admin/index');
-})->name('admin.exam-results');
+Route::middleware('can:manage,App\Models\Answer')->group(function () {
+    Route::get('/exam-results', function () {
+        return view('admin/index');
+    })->name('admin.exam-results');
+});

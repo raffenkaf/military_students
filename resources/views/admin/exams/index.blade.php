@@ -1,7 +1,12 @@
 <x-admin-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            Планування екзамену
+        </h2>
+    </x-slot>
     <div class="p-3">
         <header class="p-2 w-full flex justify-between">
-            <h1 class="text-2xl">Теми тестів</h1>
+            <h1 class="text-2xl">Список екзаменів</h1>
             <div>
                 <a
                     href="{{ route('admin.exams.create') }}"

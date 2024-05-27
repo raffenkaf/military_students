@@ -12,7 +12,7 @@
                     <x-nav-link :href="route('scheduled-exams')" :active="request()->routeIs('scheduled-exams')">
                         {{ __('Exams') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+                    <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.*')">
                         {{ __('Admin page') }}
                     </x-nav-link>
                 </div>

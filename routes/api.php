@@ -21,6 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/user-groups', [UserGroupController::class, 'index'])
-    ->name('api.user-groups');
+    ->name('api.user-groups')
+    ->can('manage', App\Models\User::class);
 Route::get('/knowledge-entity-groups', [KnowledgeEntityGroupController::class, 'index'])
-    ->name('api.knowledge-entity-groups');
+    ->name('api.knowledge-entity-groups')
+    ->can('manage', App\Models\KnowledgeEntity::class);
