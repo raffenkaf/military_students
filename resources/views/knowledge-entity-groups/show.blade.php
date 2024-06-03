@@ -13,7 +13,7 @@
                     <p>{{ $knowledgeEntity->description }}</p>
                 </div>
                 <div>
-                    <a href="{{ route('knowledge-entity-group', ['knowledgeEntityGroup' => $knowledgeEntityGroup, 'knowledgeEntity' => $knowledgeEntity]) }}" class="text-blue-500">
+                    <a href="{{ route('show-knowledge-entity', ['knowledgeEntityGroup' => $knowledgeEntityGroup, 'knowledgeEntity' => $knowledgeEntity]) }}" class="text-blue-500">
                         Read more
                     </a>
                 </div>

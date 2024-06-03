@@ -28,7 +28,14 @@ Route::get(
     )
     ->scopeBindings()
     ->can('view', 'knowledgeEntityGroup')
-    ->name('knowledge-entity-group');
+    ->name('show-knowledge-entity');
+Route::get(
+        'knowledge-entity-group/{knowledgeEntityGroup}/knowledge-entity/{knowledgeEntity}/download',
+        [KnowledgeEntityController::class, 'download']
+    )
+    ->scopeBindings()
+    ->can('view', 'knowledgeEntityGroup')
+    ->name('download-knowledge-entity');
 
 Route::middleware('guest')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
