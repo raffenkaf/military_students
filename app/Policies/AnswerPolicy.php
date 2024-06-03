@@ -18,15 +18,10 @@ class AnswerPolicy
 
     public function viewAny(User $user): bool
     {
-        $authRights = $this->authRightService->getAuthRights($user);
-
-        foreach ($authRights as $authRight) {
-            if ($authRight->accessType === AccessTypes::ADMIN_WATCH_EXAM_RESULTS->value) {
-                return true;
-            }
-        }
-
-        return false;
+        return $this->authRightService->hasAccessType(
+            $user,
+            AccessTypes::ADMIN_WATCH_EXAM_RESULTS->value
+        );
     }
 
     public function view(User $user, Answer $answer): bool

@@ -6,7 +6,6 @@ use Illuminate\Support\Str;
 
 class AuthHelperService
 {
-
     public function generateNewPassword(): string
     {
         return Str::random();

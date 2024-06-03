@@ -17,14 +17,9 @@ class ExamPolicy
 
     public function manage(User $user): bool
     {
-        $authRights = $this->authRightService->getAuthRights($user);
-
-        foreach ($authRights as $authRight) {
-            if ($authRight->accessType === AccessTypes::ADMIN_MANAGE_EXAMS->value) {
-                return true;
-            }
-        }
-
-        return false;
+        return $this->authRightService->hasAccessType(
+            $user,
+            AccessTypes::ADMIN_MANAGE_EXAMS->value
+        );
     }
 }

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 /**
  * @property string name
  * @property string description
+ * @property bool is_public
  * @property KnowledgeEntity[] knowledgeEntities
  */
 class KnowledgeEntityGroup extends BaseModel

@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\DTOs\AuthRightDTO;
 use App\Models\AuthRight;
+use App\Models\Enums\AccessTypes;
 use App\Models\Enums\AdminAccessTypes;
 use App\Models\User;
 use App\Models\UserGroup;
@@ -58,5 +59,27 @@ class AuthRightService
         }
 
         return false;
+    }
+
+    public function hasAccessType(User $user, int $value): bool
+    {
+        foreach ($this->getAuthRights($user) as $accessRight) {
+            if ($accessRight->accessType === $value) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function getAccessibleKnowledgeEntityGroups(User $user): array
+    {
+        $result = [];
+        foreach ($this->getAuthRights($user) as $accessRight) {
+            if ($accessRight->accessType === AccessTypes::SOME_STUDY_MATERIALS->value) {
+                $result = array_merge($result, $accessRight->accessDetails['knowledge_entity_groups']);
+            }
+        }
+        return $result;
     }
 }

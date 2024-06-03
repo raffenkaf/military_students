@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Web\IndexController;
+use App\Http\Controllers\Web\KnowledgeEntityController;
+use App\Http\Controllers\Web\KnowledgeEntityGroupController;
+use App\Models\KnowledgeEntityGroup;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +17,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [IndexController::class, 'guestIndex'])->name('home');
+Route::get('/', [KnowledgeEntityGroupController::class, 'index'])
+    ->name('home');
+Route::get('knowledge-entity-group/{knowledgeEntityGroup}', [KnowledgeEntityGroupController::class, 'show'])
+    ->can('view', 'knowledgeEntityGroup')
+    ->name('knowledge-entity-group');
+Route::get(
+        'knowledge-entity-group/{knowledgeEntityGroup}/knowledge-entity/{knowledgeEntity}',
+        [KnowledgeEntityController::class, 'show']
+    )
+    ->scopeBindings()
+    ->can('view', 'knowledgeEntityGroup')
+    ->name('knowledge-entity-group');
 
 Route::middleware('guest')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])

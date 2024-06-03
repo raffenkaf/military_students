@@ -17,14 +17,9 @@ class KnowledgeEntityPolicy
 
     public function manage(User $user): bool
     {
-        $authRights = $this->authRightService->getAuthRights($user);
-
-        foreach ($authRights as $authRight) {
-            if ($authRight->accessType === AccessTypes::ADMIN_MANAGE_STUDY_MATERIALS->value) {
-                return true;
-            }
-        }
-
-        return false;
+        return $this->authRightService->hasAccessType(
+            $user,
+            AccessTypes::ADMIN_MANAGE_STUDY_MATERIALS->value
+        );
     }
 }

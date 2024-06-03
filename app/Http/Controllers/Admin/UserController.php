@@ -28,8 +28,7 @@ class UserController extends AdminController
 
     public function create(
         UserRepository $repository,
-        AuthHelperService $authHelperService,
-        Request $request
+        AuthHelperService $authHelperService
     )
     {
         $password = $authHelperService->generateNewPassword();
